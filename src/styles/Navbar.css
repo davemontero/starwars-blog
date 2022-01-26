@@ -1,0 +1,13 @@
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.3rem 1rem;
+}
+
+.btn-group-container {
+  display: flex;
+  justify-content: center;
+  margin-top: .41rem;
+  margin-bottom: 1.5rem;
+}
