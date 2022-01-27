@@ -11,3 +11,57 @@
   margin-top: .41rem;
   margin-bottom: 1.5rem;
 }
+
+.navbar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+
+}
+
+.navbar-item {
+  margin-left: 1rem;
+}
+
+.navbar-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.navbar-dropdown:hover {
+  cursor: pointer;
+}
+
+.navbar-dropdown:hover .navbar-content {
+  max-height: 600px;
+  z-index: 1;
+}
+
+.navbar-content {
+  position: absolute;
+  min-width: 100%;
+  z-index: 1;
+  max-height: 0;
+  overflow: hidden;
+  background-color: #F5F5F5;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,.2);
+  transition: max-height 0.5s ease-in;
+}
+
+.navbar-content:hover {
+  display: block;
+  cursor: pointer;
+}
+
+.dropdown-link {
+  display: block;
+  padding-top: 0.5rem;
+  padding-bottom: 0.8rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.dropdown-link:hover {
+  background-color: hsl(0, 0%, 80%);
+}

@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Details from './views/Details'
 import Home from './views/Home'
 import Elements from './views/Elements'
+import injectContext from "./store/appContext";
 import Navbar from './components/Navbar'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './styles/index.css'
@@ -19,4 +20,4 @@ const App = () => {
   )
 }
 
-export default App
+export default injectContext(App);
