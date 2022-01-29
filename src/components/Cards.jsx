@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { useContext } from "react"
 import { BsHeartFill } from 'react-icons/bs'
 import '../styles/Cards.css'
@@ -7,12 +7,18 @@ import { Context } from "../store/appContext"
 
 
 const Card = (props) => {
+  const { pathname } = useLocation()
   const { store, actions } = useContext(Context);
   const [active, setActive] = useState(false)
 
-  const handleClick = (name,id) => {
+  const handleClick = e => {
+    store.favorite.includes(e.currentTarget.name)
+    ? actions.removeFavorite(store.favorite.filter(el => el !== e.currentTarget.name))
+    : actions.addFavorite(e.currentTarget.name)
+
+    !active ? setActive(true) : setActive(false)
   }
-  console.log(store.favorites)
+
   return(
     <div className={`col`} >
         <div className="card h-100" style={{height: "400px"}}>
@@ -31,16 +37,10 @@ const Card = (props) => {
           <div className="card-body d-flex justify-content-between align-items-center">
             <h5 className="card-title mb-0" style={{textTransform: "capitalize"}}>{props.title}</h5>
             {
-              props.type && (
-                !active ? (
-                <button className="btn favorite-btn" onClick={handleClick(props.title)}>
-                  <BsHeartFill className="favorite-icon" />
+              pathname !== '/' && (
+                <button className={`btn favorite-btn ${active && 'favorite-btn-active'}`} name={props.title} id={props.id} onClick={handleClick}>
+                  <BsHeartFill className={`favorite-icon ${active && 'favorite-active'}`} />
                 </button>
-                ) : (
-                  <button className="btn favorite-btn favorite-btn-active" onClick={handleClick}>
-                    <BsHeartFill className="favorite-icon favorite-active" />
-                  </button>
-                )
               )
             }
           </div>

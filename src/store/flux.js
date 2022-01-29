@@ -3,7 +3,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
             results: [],
             categories: [],
-            details: []
+            details: [],
+            favorite: []
         },
 		actions: {
             obtenerResults: (type) => {
@@ -20,6 +21,13 @@ const getState = ({ getStore, getActions, setStore }) => {
                 fetch(`https://www.swapi.tech/api/${type}/${uid}`)
                 .then(response => response.json())
                 .then(data => setStore({ details: data }))
+            },
+            addFavorite: (name) => {
+                const store = getStore()
+                setStore( { favorite: [...store.favorite, name] } )
+            },
+            removeFavorite: (favorites) => {
+                setStore( { favorite: favorites } )
             }
         }
 	};

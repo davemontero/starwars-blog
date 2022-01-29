@@ -16,7 +16,7 @@ const Elements = () => {
       <div className="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
         { 
           store.results.message
-          ? store.results.results.map(el => <Card title={el.name} key={el.uid} type={type} img={`../img/${type}/${el.uid}.jpg`} link={`/details/${type}/${el.uid}`}/>) 
+          ? store.results.results.map(el => <Card title={el.name} id={el.uid} key={el.uid} type={type} img={`../img/${type}/${el.uid}.jpg`} link={`/details/${type}/${el.uid}`}/>) 
           : 'Cargando...'
         }
       </div>
