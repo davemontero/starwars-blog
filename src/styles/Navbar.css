@@ -82,6 +82,8 @@
   border-color: hsl(54, 100%, 55%);
 }
 
-.remove-icon {
-  font-size: 2rem;
+.btn-remove {
+  border: 0;
+  color: red;
+  font-size: 1.3rem;
 }

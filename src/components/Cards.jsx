@@ -15,8 +15,6 @@ const Card = (props) => {
     store.favorite.includes(e.currentTarget.name)
     ? actions.removeFavorite(store.favorite.filter(el => el !== e.currentTarget.name))
     : actions.addFavorite(e.currentTarget.name)
-
-    !active ? setActive(true) : setActive(false)
   }
 
   return(
@@ -38,8 +36,8 @@ const Card = (props) => {
             <h5 className="card-title mb-0" style={{textTransform: "capitalize"}}>{props.title}</h5>
             {
               pathname !== '/' && (
-                <button className={`btn favorite-btn ${active && 'favorite-btn-active'}`} name={props.title} id={props.id} onClick={handleClick}>
-                  <BsHeartFill className={`favorite-icon ${active && 'favorite-active'}`} />
+                <button className={`btn favorite-btn ${store.favorite.includes(props.title) ? 'favorite-btn-active' : ''}`} name={props.title} id={props.id} onClick={handleClick}>
+                  <BsHeartFill className={`favorite-icon ${store.favorite.includes(props.title) ? 'favorite-active' : ''}`} />
                 </button>
               )
             }

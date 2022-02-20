@@ -8,7 +8,7 @@ const Navbar = () => {
   const { store, actions } = useContext(Context);
 
   const handleRemove = e => {
-    actions.removeFavorite(store.favorite.filter(el => el !== e.currentTarget.element))
+    actions.removeFavorite(store.favorite.filter(el => el !== e.currentTarget.name))
   }
 
   return(
@@ -37,7 +37,7 @@ const Navbar = () => {
           <div className="navbar-content">
           {
             (store.favorite.length > 0) 
-            ? store.favorite.map(el => <span className='dropdown-link'>{el} <BsX className='remove-icon' element={el} onClick={handleRemove}/></span>)
+            ? store.favorite.map((el,i) => <div className='dropdown-link' key={i}>{el} <button className='btn-remove' name={el} onClick={handleRemove}><BsX/></button></div>)
             : <span className='dropdown-link'>No hay Elementos</span>
           }
           </div>
